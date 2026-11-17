@@ -16,4 +16,6 @@
 - Tras la indicación del usuario, creada la rama local `demo-ejercicio-3-local` desde `demo-ejercicio-2-local`, que contiene el punto de partida del ejercicio 2. `main` no se modificó.
 - Añadidas en `variables.tf` las validaciones para aceptar solo `desarrollo`, `pruebas` o `integracion` en `entorno` y exigir el prefijo `portal-` en `nombre_aplicacion`.
 - Se conservaron los valores predeterminados y `escenario-integracion.tfvars`.
-- No se hizo commit ni push y no se ejecutó OpenTofu, según la instrucción del usuario.
+- Commit `4fe8368` (`Ejercicio 3: validar entorno y nombre`) publicado en `origin/demo-ejercicio-3-local`.
+- La ejecución de Actions [44084046061](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44084046061) terminó correctamente: formato, validación, plan predeterminado y plan de integración pasaron.
+- Se inició la prueba controlada del entorno no permitido en `escenario-integracion.tfvars`; el valor se restaurará después de verificar el fallo del plan de integración.
