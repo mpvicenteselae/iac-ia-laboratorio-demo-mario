@@ -32,3 +32,5 @@
 - Para el ejercicio 4, se anadio un `id` a cada una de las cuatro comprobaciones indicadas y se agregaron los pasos de resumen y publicacion del artefacto.
 - La guia pide que el diff de codigo contenga solo `.github/workflows/validacion.yml`. Este registro tambien se actualiza y se publicara en los commits, por peticion expresa del usuario.
 - `evidencia.txt` se genera en el runner; no se creo como archivo del repositorio. No se ejecuto OpenTofu localmente ni se anadio `tofu apply`.
+- El commit `354f9e4` (`Ejercicio 4: resumir y conservar evidencias`) se publico en `automatizacion-ejercicio-4`. La ejecucion de Actions [44087836564](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44087836564) termino correctamente: las cuatro comprobaciones, el resumen y la publicacion del artefacto pasaron. Se creo `evidencia-iac-44087836564-1`, con retencion hasta el 2026-11-24.
+- Para el ensayo controlado, se cambio temporalmente el `-var-file` del plan de integracion a `escenario-inexistente.tfvars`. Este cambio provocara un fallo del plan y se revertira tras verificar el resumen y el artefacto.
