@@ -20,3 +20,6 @@
 - La ejecución de Actions [44084046061](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44084046061) terminó correctamente: formato, validación, plan predeterminado y plan de integración pasaron.
 - La ejecución de Actions [44084197873](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44084197873) falló como estaba previsto: formato, validación y plan predeterminado pasaron; `Plan del escenario integracion` falló con `El entorno debe ser desarrollo, pruebas o integracion.` para `produccion`.
 - El archivo `escenario-integracion.tfvars` se restauró a `entorno = "integracion"` y `nombre_aplicacion = "portal-interno"` para corregir la prueba.
+- El commit `f4bb712` (`Corregir entorno de integracion`) se publicó y su ejecución de Actions [44084379151](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44084379151) terminó correctamente.
+- La comparación de `demo-ejercicio-3-local` con `origin/main` incluye también los cambios del ejercicio 2: `main` sigue en el commit inicial del ejercicio 1. Por ello, un PR hacia `main` incorporará los cambios del ejercicio 2 además de las validaciones del ejercicio 3.
+- `main` sigue sin modificarse; la rama de trabajo conserva los valores permitidos.
