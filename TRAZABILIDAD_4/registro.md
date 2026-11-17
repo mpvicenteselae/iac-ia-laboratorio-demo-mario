@@ -23,3 +23,12 @@
 - El commit `f4bb712` (`Corregir entorno de integracion`) se publicó y su ejecución de Actions [44084379151](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44084379151) terminó correctamente.
 - La comparación de `demo-ejercicio-3-local` con `origin/main` incluye también los cambios del ejercicio 2: `main` sigue en el commit inicial del ejercicio 1. Por ello, un PR hacia `main` incorporará los cambios del ejercicio 2 además de las validaciones del ejercicio 3.
 - `main` sigue sin modificarse; la rama de trabajo conserva los valores permitidos.
+
+## Cierre del ejercicio 3 y preparacion del ejercicio 4 - 2026-11-17
+
+- El PR #1 se fusiono en `main` en el commit `6538e64`. La ejecucion de Actions de `main` [44084948931](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44084948931) finalizo correctamente.
+- Despues de esa fusion, `main` local se sincronizo con `origin/main`; ambos apuntan a `6538e64`. El estado inicial del ejercicio 4 estaba limpio.
+- La rama del ejercicio 4 se creo desde `main` y se llama `automatizacion-ejercicio-4`.
+- Para el ejercicio 4, se anadio un `id` a cada una de las cuatro comprobaciones indicadas y se agregaron los pasos de resumen y publicacion del artefacto.
+- La guia pide que el diff de codigo contenga solo `.github/workflows/validacion.yml`. Este registro tambien se actualiza y se publicara en los commits, por peticion expresa del usuario.
+- `evidencia.txt` se genera en el runner; no se creo como archivo del repositorio. No se ejecuto OpenTofu localmente ni se anadio `tofu apply`.
