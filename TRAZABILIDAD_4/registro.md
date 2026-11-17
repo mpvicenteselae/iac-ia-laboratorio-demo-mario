@@ -18,4 +18,5 @@
 - Se conservaron los valores predeterminados y `escenario-integracion.tfvars`.
 - Commit `4fe8368` (`Ejercicio 3: validar entorno y nombre`) publicado en `origin/demo-ejercicio-3-local`.
 - La ejecución de Actions [44084046061](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44084046061) terminó correctamente: formato, validación, plan predeterminado y plan de integración pasaron.
-- Se inició la prueba controlada del entorno no permitido en `escenario-integracion.tfvars`; el valor se restaurará después de verificar el fallo del plan de integración.
+- La ejecución de Actions [44084197873](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44084197873) falló como estaba previsto: formato, validación y plan predeterminado pasaron; `Plan del escenario integracion` falló con `El entorno debe ser desarrollo, pruebas o integracion.` para `produccion`.
+- El archivo `escenario-integracion.tfvars` se restauró a `entorno = "integracion"` y `nombre_aplicacion = "portal-interno"` para corregir la prueba.
