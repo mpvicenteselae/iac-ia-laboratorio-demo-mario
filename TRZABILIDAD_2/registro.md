@@ -29,3 +29,18 @@
 - Preparados `variables.tf`, `main.tf` y `TRZABILIDAD_2/registro.md`, tal como se pidio incluir la carpeta.
 - La primera comprobacion de la lista preparada detecto el archivo de trazabilidad y detuvo el commit, conforme a la condicion que solo permitia los dos archivos `.tf`.
 - Tras la indicacion del usuario de incluir la trazabilidad, se autorizo continuar con esos tres archivos y la excepcion a dicha condicion.
+
+## Parte B - 2026-11-17
+
+- Antes de editar, verificados la rama `demo-ejercicio-2-local`, el estado limpio, `origin`, el workflow actual y los archivos de variables y recurso. El archivo `escenario-integracion.tfvars` no existia.
+- Creado `escenario-integracion.tfvars` con `entorno = "integracion"` y `nombre_aplicacion = "portal-interno"`.
+- En `.github/workflows/validacion.yml`, conservadas las etapas de inicializacion, formato y validacion, y reemplazado el paso unico de plan por un plan predeterminado y otro que usa `-var-file=escenario-integracion.tfvars`.
+- Comprobados la lista de cambios, la excepcion de `.gitignore` para el archivo `.tfvars` y `git diff --check`; no se reportaron errores de espacios.
+- No se modificaron otros archivos de configuracion. No se ejecuto OpenTofu ni se hizo commit o push.
+
+## Comprobacion previa al commit de la parte B - 2026-11-17
+
+- Confirmado que la rama activa es `demo-ejercicio-2-local` y que `origin` apunta al repositorio personal esperado.
+- `git diff --check` no reporto errores. Antes de preparar, no habia archivos staged.
+- Preparados para revision `escenario-integracion.tfvars`, `.github/workflows/validacion.yml` y este registro.
+- No se hizo commit ni push.
