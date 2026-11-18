@@ -27,3 +27,9 @@
 - Inicializacion y formato pasaron; validacion fallo; los dos planes se omitieron. El resumen reflejo esos resultados y `Publicar evidencia` paso, creando `evidencia-iac-44295551366-1`, con caducidad el 2026-11-25.
 - Tras comprobar el log, se restauro `nombre = "portal-ayuda"` en la llamada `module "ayuda"`. El commit `6a6a921` (`Correccion: restaurar nombre del modulo`) y la ejecucion de Actions [44295651116](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44295651116) verificaron la correccion: formato, validacion, ambos planes, resumen y artefacto terminaron en verde. Se publico `evidencia-iac-44295651116-1`, con caducidad el 2026-11-25.
 - El commit `4a2f177` (`Ejercicio 5: documentar arquitectura`) publico el README y esta trazabilidad actualizada. La ejecucion de Actions [44295873797](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44295873797) termino en verde, incluidos ambos planes, resumen y artefacto `evidencia-iac-44295873797-1` (caduca el 2026-11-25).
+
+## Propuesta de integracion
+
+- Se abrio el PR [#3](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/pull/3) desde `arquitectura-ejercicio-5` hacia `main`.
+- La comparacion final contiene ocho archivos: los siete de codigo y documentacion del ejercicio, mas este registro. Se reviso que el argumento `nombre = "portal-ayuda"` esta presente y que el ensayo rojo no forma parte del diff final.
+- El check inicial del PR [44296429834](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44296429834) termino correctamente.
