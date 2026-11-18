@@ -24,4 +24,7 @@
 - La configuracion conserva el argumento `nombre` de la instancia `ayuda`; no se dejo el error de ensayo en la version final.
 - No se ejecuto `tofu apply`, no se hizo commit ni push y no se abrio un pull request.
 - El ensayo que omite temporalmente `nombre` y su correccion requieren commits y ejecuciones de GitHub Actions. No se realizaron porque esta sesion debe dejar los cambios locales sin publicar.
-- La validacion de formato, `tofu validate`, ambos planes, el resumen y el artefacto deben verificarse en Actions despues de autorizar la publicacion de la rama.
+- La validacion de formato, `tofu validate`, ambos planes, el resumen y el artefacto se verificaron en la ejecucion inicial de Actions.
+- El commit `b33775e` (`Ejercicio 5: modulo local reutilizable`) se publico en `arquitectura-ejercicio-5`. La ejecucion de Actions [44295298714](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44295298714) termino en verde: inicializacion, formato recursivo, validacion, ambos planes, resumen y artefacto pasaron.
+- El plan predeterminado mostro `portal-demo` y `portal-ayuda`, ambos en `pruebas`; el de integracion mostro `portal-interno` y `portal-ayuda`, ambos en `integracion`. Cada uno indico `2 to add, 0 to change, 0 to destroy`. Se publico `evidencia-iac-44295298714-1`, con caducidad el 2026-11-25.
+- Para el ensayo rojo se ha omitido temporalmente solo `nombre = "portal-ayuda"` en la llamada `module "ayuda"` del `main.tf` raiz. Este estado temporal se confirmara en un commit separado y se corregira despues de comprobar Actions.
