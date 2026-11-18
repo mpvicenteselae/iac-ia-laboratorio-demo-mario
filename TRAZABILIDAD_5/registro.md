@@ -19,11 +19,10 @@
 - En `.github/workflows/validacion.yml`, se habilito `tofu fmt -check -diff -recursive` para incluir el codigo de la nueva carpeta. Se conservaron las demas comprobaciones, los dos planes, el resumen y el artefacto del ejercicio 4.
 - Al final de `README.md`, se documento la arquitectura ficticia, la reutilizacion, los escenarios, las evidencias, la gobernanza y los limites de la practica.
 
-## Ensayo rojo y correccion
+## Validaciones, ensayo rojo y correccion
 
-- El commit `aa35dee` (`Prueba: falta nombre en modulo ayuda`) se publico solo para el ensayo controlado. La ejecucion de Actions [44295551366](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44295551366) fallo en `Validar` con `Missing required argument`: falta el argumento `nombre` en `module "ayuda"` (`main.tf`, linea 7).
-- Inicializacion y formato pasaron; validacion fallo; los dos planes se omitieron. El resumen reflejo esos resultados y `Publicar evidencia` paso, creando `evidencia-iac-44295551366-1`, con caducidad el 2026-11-25.
-- Tras comprobar el log, se restauro `nombre = "portal-ayuda"` en la llamada `module "ayuda"`. La ejecucion verde de la correccion se registrara aqui cuando termine.
 - El commit `b33775e` (`Ejercicio 5: modulo local reutilizable`) se publico en `arquitectura-ejercicio-5`. La ejecucion de Actions [44295298714](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44295298714) termino en verde: inicializacion, formato recursivo, validacion, ambos planes, resumen y artefacto pasaron.
 - El plan predeterminado mostro `portal-demo` y `portal-ayuda`, ambos en `pruebas`; el de integracion mostro `portal-interno` y `portal-ayuda`, ambos en `integracion`. Cada uno indico `2 to add, 0 to change, 0 to destroy`. Se publico `evidencia-iac-44295298714-1`, con caducidad el 2026-11-25.
-- Para el ensayo rojo se ha omitido temporalmente solo `nombre = "portal-ayuda"` en la llamada `module "ayuda"` del `main.tf` raiz. Este estado temporal se confirmara en un commit separado y se corregira despues de comprobar Actions.
+- El commit `aa35dee` (`Prueba: falta nombre en modulo ayuda`) se publico solo para el ensayo controlado. La ejecucion de Actions [44295551366](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44295551366) fallo en `Validar` con `Missing required argument`: falta el argumento `nombre` en `module "ayuda"` (`main.tf`, linea 7).
+- Inicializacion y formato pasaron; validacion fallo; los dos planes se omitieron. El resumen reflejo esos resultados y `Publicar evidencia` paso, creando `evidencia-iac-44295551366-1`, con caducidad el 2026-11-25.
+- Tras comprobar el log, se restauro `nombre = "portal-ayuda"` en la llamada `module "ayuda"`. El commit `6a6a921` (`Correccion: restaurar nombre del modulo`) y la ejecucion de Actions [44295651116](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44295651116) verificaron la correccion: formato, validacion, ambos planes, resumen y artefacto terminaron en verde. Se publico `evidencia-iac-44295651116-1`, con caducidad el 2026-11-25.
