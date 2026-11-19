@@ -44,3 +44,11 @@ El workflow calcula un plan, **no ejecuta `tofu apply`** y no crea una web ni in
 - **Evidencias:** GitHub Actions ejecuta inicialización, formato recursivo, validación y los dos planes; publica además un resumen y un artefacto con los resultados.
 - **Gobernanza:** antes de aprobar un cambio, una persona debe revisar el diff, los planes y las evidencias del pipeline.
 - **Límites:** `terraform_data` solo representa datos ficticios. No se ejecuta `apply`, no se despliegan servicios cloud y estos planes no acreditan costes, seguridad ni observabilidad de producción.
+
+## Política del laboratorio
+
+El workflow convierte cada plan guardado en JSON y lo entrega a `politica_plan.py`. La política permite únicamente las dos fichas `module.portal.terraform_data.ficha` y `module.ayuda.terraform_data.ficha`, ambas como creaciones de `terraform_data`. Los nombres deben empezar por `portal-`, ayuda debe llamarse `portal-ayuda` y las dos fichas deben compartir un entorno admitido.
+
+`tofu validate` comprueba la estructura y coherencia de la configuración; no decide si los valores previstos cumplen esta regla entre las dos instancias. La política revisa los cambios calculados en el plan. Sus resultados aparecen en los pasos de política de GitHub Actions, en el resumen y en el artefacto de evidencia.
+
+Este control es didáctico y limitado al caso ficticio. No se ejecuta `tofu apply`, no se despliega infraestructura cloud y un resultado aprobado no demuestra seguridad, costes ni gobierno de producción. En un entorno real, la política también tendría que estar protegida y revisada independientemente del cambio que evalúa.
