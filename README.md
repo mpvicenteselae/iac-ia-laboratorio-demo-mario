@@ -60,3 +60,11 @@ El mapa local `catalogo` contiene las claves `portal` y `ayuda`; sus valores son
 La salida `resumen` conserva esas claves y reúne el resumen de cada instancia. La política del laboratorio permite exactamente las direcciones `module.fichas["portal"].terraform_data.ficha` y `module.fichas["ayuda"].terraform_data.ficha`; por eso una tercera entrada, como `informes`, puede producir un plan válido pero no autorizado por esta regla.
 
 El catálogo es una demostración didáctica, no un servicio real de autoservicio. No se ejecuta `tofu apply` ni se despliega infraestructura cloud. En un entorno con recursos aplicados, cambiar las direcciones del módulo requeriría revisar la migración del estado antes de proceder.
+
+## Ejercicio 8: etiquetas y responsables
+
+Cada ficha añade a su `input` un mapa ficticio `etiquetas` con `proyecto = "nexo-portal"`, el entorno de la ficha y su equipo responsable. La variable raíz `responsable` se pasa a cada instancia del módulo; por defecto, pruebas usa `equipo-lab`, mientras integración define `equipo-integracion` en `escenario-integracion.tfvars`.
+
+La política inspecciona el plan y exige las claves exactas, el proyecto y la coherencia del entorno y del responsable. Acepta `equipo-lab` en desarrollo y pruebas, y `equipo-integracion` en integración. Por eso un responsable de tipo cadena puede superar `tofu validate` y el plan, pero ser rechazado por la política del plan de integración.
+
+Las ejecuciones del taller comprueban primero la configuración correcta, después el rechazo intencionado de `equipo-lab` en integración y finalmente la corrección. `terraform_data` y `etiquetas` son datos simulados: no son etiquetas nativas de cloud, no se despliegan recursos ni se ejecuta `tofu apply`. La política está en el mismo repositorio y no equivale a aprobación independiente para producción.
