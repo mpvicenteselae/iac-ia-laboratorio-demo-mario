@@ -42,6 +42,11 @@
 - Se retiró únicamente la clave `informes`. El commit `59cc393` (`Correccion: catalogo de dos fichas`) dejó las claves `portal` y `ayuda`.
 - La ejecución [44708640364](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44708640364) terminó en verde. Los dos planes mostraron `2 to add, 0 to change, 0 to destroy`, salidas `resumen` con sus claves y ambas políticas aprobaron los escenarios `pruebas` e `integracion`.
 
+## README y registro publicados
+
+- El commit `6a68390` (`Documentar catalogo del ejercicio 7`) publicó la sección `Catálogo de fichas` del README y este registro.
+- La ejecución [44708832266](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44708832266) terminó en verde después de publicar la documentación.
+
 ## Pendiente
 
-- Publicar la documentación y trazabilidad, comprobar su ejecución y abrir el pull request con las evidencias verde, roja y verde corregida.
+- Abrir el pull request con las evidencias verde, roja y verde corregida.
