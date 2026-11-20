@@ -38,7 +38,7 @@ El workflow calcula un plan, **no ejecuta `tofu apply`** y no crea una web ni in
 ## Arquitectura ficticia
 
 - **Necesidad:** representar el portal principal y una ficha de ayuda con la misma estructura, sin duplicar la definición del recurso.
-- **Reutilización:** las dos instancias llaman al módulo local `modulo_ficha`; cada llamada proporciona su `nombre` y el `entorno` seleccionado.
+- **Reutilización:** el mapa `local.catalogo` alimenta un único bloque `module "fichas"` con `for_each`; cada entrada proporciona su `nombre` y comparte el `entorno` seleccionado.
 - **Entradas controladas:** el módulo exige ambas entradas, limita los nombres al prefijo `portal-` y acepta únicamente `desarrollo`, `pruebas` o `integracion`.
 - **Escenarios:** el plan predeterminado usa `portal-demo` y `portal-ayuda` en `pruebas`; el plan de integración usa el nombre configurado en `escenario-integracion.tfvars` y `portal-ayuda`, ambos en `integracion`.
 - **Evidencias:** GitHub Actions ejecuta inicialización, formato recursivo, validación y los dos planes; publica además un resumen y un artefacto con los resultados.
@@ -47,8 +47,16 @@ El workflow calcula un plan, **no ejecuta `tofu apply`** y no crea una web ni in
 
 ## Política del laboratorio
 
-El workflow convierte cada plan guardado en JSON y lo entrega a `politica_plan.py`. La política permite únicamente las dos fichas `module.portal.terraform_data.ficha` y `module.ayuda.terraform_data.ficha`, ambas como creaciones de `terraform_data`. Los nombres deben empezar por `portal-`, ayuda debe llamarse `portal-ayuda` y las dos fichas deben compartir un entorno admitido.
+El workflow convierte cada plan guardado en JSON y lo entrega a `politica_plan.py`. La política permite únicamente las dos fichas `module.fichas["portal"].terraform_data.ficha` y `module.fichas["ayuda"].terraform_data.ficha`, ambas como creaciones de `terraform_data`. Los nombres deben empezar por `portal-`, ayuda debe llamarse `portal-ayuda` y las dos fichas deben compartir un entorno admitido.
 
 `tofu validate` comprueba la estructura y coherencia de la configuración; no decide si los valores previstos cumplen esta regla entre las dos instancias. La política revisa los cambios calculados en el plan. Sus resultados aparecen en los pasos de política de GitHub Actions, en el resumen y en el artefacto de evidencia.
 
 Este control es didáctico y limitado al caso ficticio. No se ejecuta `tofu apply`, no se despliega infraestructura cloud y un resultado aprobado no demuestra seguridad, costes ni gobierno de producción. En un entorno real, la política también tendría que estar protegida y revisada independientemente del cambio que evalúa.
+
+## Catálogo de fichas
+
+El mapa local `catalogo` contiene las claves `portal` y `ayuda`; sus valores son, respectivamente, el nombre configurado para la aplicación y `portal-ayuda`. Un único bloque `module "fichas"` usa `for_each` para crear una instancia de `modulo_ficha` por clave y pasa cada nombre mediante `each.value`. Así se evita duplicar bloques de módulo sin perder la identidad de cada ficha.
+
+La salida `resumen` conserva esas claves y reúne el resumen de cada instancia. La política del laboratorio permite exactamente las direcciones `module.fichas["portal"].terraform_data.ficha` y `module.fichas["ayuda"].terraform_data.ficha`; por eso una tercera entrada, como `informes`, puede producir un plan válido pero no autorizado por esta regla.
+
+El catálogo es una demostración didáctica, no un servicio real de autoservicio. No se ejecuta `tofu apply` ni se despliega infraestructura cloud. En un entorno con recursos aplicados, cambiar las direcciones del módulo requeriría revisar la migración del estado antes de proceder.
