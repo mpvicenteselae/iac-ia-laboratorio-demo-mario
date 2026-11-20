@@ -47,6 +47,9 @@
 - El commit `6a68390` (`Documentar catalogo del ejercicio 7`) publicó la sección `Catálogo de fichas` del README y este registro.
 - La ejecución [44708832266](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44708832266) terminó en verde después de publicar la documentación.
 
-## Pendiente
+## Pull request y validación final
 
-- Abrir el pull request con las evidencias verde, roja y verde corregida.
+- Se creó el PR [#5](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/pull/5) desde `catalogo-ejercicio-7` hacia `main`, con las evidencias verde-rojo-verde, el resultado y los límites didácticos.
+- La ejecución del workflow asociada al PR, [44709387378](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44709387378), terminó correctamente: formato, validación, los dos planes y políticas, resumen y publicación de evidencia pasaron. GitHub mostró 2 checks exitosos y ninguna incompatibilidad con `main`.
+- El PR sigue abierto y sin fusionar. No se registró una aprobación formal: la cuenta que creó el PR es también su autora, por lo que la aprobación debe realizarla otra persona autorizada en el repositorio. No se intentó eludir esa restricción.
+- No se ejecutó `tofu apply`.
