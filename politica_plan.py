@@ -2,8 +2,8 @@ import json
 import sys
 
 
-PORTAL_ADDRESS = "module.portal.terraform_data.ficha"
-HELP_ADDRESS = "module.ayuda.terraform_data.ficha"
+PORTAL_ADDRESS = 'module.fichas["portal"].terraform_data.ficha'
+HELP_ADDRESS = 'module.fichas["ayuda"].terraform_data.ficha'
 EXPECTED_ADDRESSES = (PORTAL_ADDRESS, HELP_ADDRESS)
 ALLOWED_ENVIRONMENTS = ("desarrollo", "pruebas", "integracion")
 
@@ -40,7 +40,7 @@ def main():
     if not isinstance(resource_changes, list):
         reject("resource_changes debe existir y ser una lista.")
     if len(resource_changes) != 2:
-        reject("resource_changes debe contener exactamente dos cambios.")
+        reject("se esperan exactamente las fichas portal y ayuda.")
 
     changes_by_address = {}
     for resource_change in resource_changes:
