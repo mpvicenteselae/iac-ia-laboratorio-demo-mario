@@ -28,7 +28,7 @@
 - En el caso correcto se espera que formato, validación, los dos planes y las políticas terminen correctamente: pruebas debe llevar `equipo-lab`, e integración `equipo-integracion`.
 - Para el ensayo negativo, el cambio temporal será únicamente sustituir el responsable de integración por `equipo-lab`. Se predice que validación y ambos planes seguirán pasando; la política predeterminada aprobará, y la política del plan de integración rechazará con `POLÍTICA RECHAZADA: responsable no aprobado para integracion.` El estado completo del workflow será rojo por esa regla.
 - La predicción se confirmó en [44729086945](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44729086945): formato, validación, ambos planes y la política predeterminada pasaron; los planes mostraron dos altas y el responsable erróneo en integración; falló solo `Politica del plan de integracion` con el rechazo previsto. Resumen y artefacto también se publicaron.
-- Se restauró `equipo-integracion` en el commit `ef9dda9`. Su ejecución [44729312300](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44729312300) está pendiente de verificar.
+- Se restauró `equipo-integracion` en el commit `ef9dda9`. Su ejecución [44729312300](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44729312300) se verificó en la sección Resultados.
 - Se contrastó la afirmación didáctica «`tofu validate` comprueba la validez estructural, pero no gobierna la asignación del responsable»: en el ensayo, validación y planes pasaron con `equipo-lab` en integración y la política del plan lo rechazó.
 
 ## Resultados
@@ -38,4 +38,11 @@
 - Prueba deliberada de política: [44729086945](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44729086945). La política de integración rechazó exactamente el equipo no autorizado; no hubo fallo de formato, configuración ni plan.
 - La afirmación contrastada fue que `tofu validate` no gobierna la asignación del equipo: en el ensayo, validación y planes aprobaron `equipo-lab` como cadena válida, mientras la política de plan lo rechazó para integración.
 - No se ejecutó `tofu apply`; `terraform_data` y el mapa `etiquetas` solo representan valores ficticios. El control es didáctico, vive en la misma rama que evalúa y no demuestra etiquetado nativo, permisos, costos, observabilidad ni gobierno de producción.
-- Queda por publicar esta documentación y registro, verificar su ejecución, y crear el PR de `taller-final-ejercicio-8` hacia `catalogo-ejercicio-7`.
+- El README y el registro se publicaron en `82c9915`; la ejecución [44729398682](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44729398682) terminó en verde.
+
+## PR e integración
+
+- Se creó el [PR #6](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/pull/6), `Ejercicio 8: etiquetas y responsables por entorno`, desde `taller-final-ejercicio-8` hacia `catalogo-ejercicio-7`. Incluyó seis commits y ocho archivos.
+- La ejecución de Actions del PR, [44730353978](https://github.com/mpvicenteselae/iac-ia-laboratorio-demo-mario/actions/runs/44730353978), terminó correctamente. GitHub confirmó dos comprobaciones satisfactorias y ausencia de conflictos.
+- Tras la indicación del usuario, el PR se fusionó y cerró. El merge commit es `c0c2e9b` en `catalogo-ejercicio-7`. No se eliminó la rama y no se ejecutó `tofu apply`.
+- El directorio preexistente y no rastreado `.github/skills/` se mantuvo intacto.
